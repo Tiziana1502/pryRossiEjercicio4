@@ -69,25 +69,30 @@ namespace pryRossiEjercicio4
                         btnMozo.Enabled = false;
                         return false; //corta todo el método y devuelve false
                     }
-
+                   
                     // Si no se puede convertir a número
                     double numero;
                     if (!double.TryParse(celda.ToString(), out numero))
                     {
-                        MessageBox.Show($"El valor en la fila {fila + 1}, columna {col + 1} no es numérico.",
-                            "Dato incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
+                        dgvDatos.Rows[fila].Cells[col].Style.BackColor = Color.LightBlue;
+                        dgvDatos.Rows[fila].Cells[col].Value = 0;                        
                         btnTotal.Enabled = false;
                         btnMozo.Enabled = false;
                         return false; //corta todo el método y devuelve false
                     }
+                    else
+                    {
+                        dgvDatos.Rows[fila].Cells[col].Style.BackColor = Color.White;
+                    }
                 }
             }
-
-            //Si pasó todas las validaciones
-            btnMozo.Enabled = true;
-            btnTotal.Enabled = true;
-            return true;
+            //Se muestra el mensaje de datos validados correctamente
+            
+                MessageBox.Show("Los datos han sido validados correctamente.");
+                btnMozo.Enabled = true;
+                btnTotal.Enabled = true;
+                return true;            
+            
         }
 
         private void btnMozo_Click(object sender, EventArgs e)
