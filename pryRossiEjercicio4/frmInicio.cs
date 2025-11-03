@@ -7,7 +7,7 @@ namespace pryRossiEjercicio4
             InitializeComponent();
         }
 
-        //Declaración de Matriz
+        //DeclaraciÃ³n de Matriz
         float[,] vecDatos = new float[5, 4];
 
         int fila = 0;
@@ -32,7 +32,7 @@ namespace pryRossiEjercicio4
             dgvDatos.Rows[3].Cells[0].Value = "Gonzalo";
             dgvDatos.Rows[4].Cells[0].Value = "Alberto";
 
-            // configurar la primera columna para que sea de sólo lectura
+            // configurar la primera columna para que sea de sÃ³lo lectura
             dgvDatos.Columns[0].ReadOnly = true;
 
             //Inicializamos la grilla con valor 0 en todas las posiciones
@@ -59,18 +59,18 @@ namespace pryRossiEjercicio4
                 {
                     object celda = dgvDatos.Rows[fila].Cells[col].Value;
 
-                    // Si la celda está vacía o nula
+                    // Si la celda estÃ¡ vacÃ­a o nula
                     if (celda == null || celda.ToString() == "")
                     {
-                        MessageBox.Show($"Hay una celda vacía en la fila {fila + 1}, columna {col + 1}.",
+                        MessageBox.Show($"Hay una celda vacÃ­a en la fila {fila + 1}, columna {col + 1}.",
                             "Dato faltante", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                         btnTotal.Enabled = false;
                         btnMozo.Enabled = false;
-                        return false; //corta todo el método y devuelve false
+                        return false; //corta todo el mÃ©todo y devuelve false
                     }
                    
-                    // Si no se puede convertir a número
+                    // Si no se puede convertir a nÃºmero
                     double numero;
                     if (!double.TryParse(celda.ToString(), out numero))
                     {
@@ -78,7 +78,7 @@ namespace pryRossiEjercicio4
                         dgvDatos.Rows[fila].Cells[col].Value = 0;                        
                         btnTotal.Enabled = false;
                         btnMozo.Enabled = false;
-                        return false; //corta todo el método y devuelve false
+                        return false; //corta todo el mÃ©todo y devuelve false
                     }
                     else
                     {
@@ -89,6 +89,7 @@ namespace pryRossiEjercicio4
             //Se muestra el mensaje de datos validados correctamente
             
                 MessageBox.Show("Los datos han sido validados correctamente.");
+                "Datos Validados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnMozo.Enabled = true;
                 btnTotal.Enabled = true;
                 return true;            
@@ -155,7 +156,7 @@ namespace pryRossiEjercicio4
             lstResultado.Items.Clear();
 
             //Muestro el resultado
-            lstResultado.Items.Add("Ventas por categoría:");
+            lstResultado.Items.Add("Ventas por categorÃ­a:");
             lstResultado.Items.Add("-------------------------");
             lstResultado.Items.Add("Comida: " + totalCom);
             lstResultado.Items.Add("Bebidas con alcohol: " + totalBebAlcohol);
