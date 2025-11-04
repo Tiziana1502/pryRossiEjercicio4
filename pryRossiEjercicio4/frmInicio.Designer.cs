@@ -53,10 +53,11 @@
             btnValidar.BackColor = Color.SteelBlue;
             btnValidar.Font = new Font("Arial", 9.75F, FontStyle.Bold);
             btnValidar.ForeColor = SystemColors.ControlLightLight;
-            btnValidar.Location = new Point(139, 377);
+            btnValidar.Location = new Point(159, 503);
+            btnValidar.Margin = new Padding(3, 4, 3, 4);
             btnValidar.Name = "btnValidar";
-            btnValidar.Size = new Size(123, 31);
-            btnValidar.TabIndex = 3;
+            btnValidar.Size = new Size(141, 41);
+            btnValidar.TabIndex = 7;
             btnValidar.Text = "Validar Datos";
             btnValidar.UseVisualStyleBackColor = false;
             btnValidar.Click += btnValidar_Click;
@@ -65,14 +66,17 @@
             // 
             dgvDatos.AllowUserToAddRows = false;
             dgvDatos.AllowUserToDeleteRows = false;
+            dgvDatos.AllowUserToResizeColumns = false;
+            dgvDatos.AllowUserToResizeRows = false;
             dgvDatos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvDatos.Columns.AddRange(new DataGridViewColumn[] { colMozos, colComida, colBebida, colBebidaAlc, colPostres });
-            dgvDatos.Location = new Point(12, 65);
+            dgvDatos.Location = new Point(14, 87);
+            dgvDatos.Margin = new Padding(3, 4, 3, 4);
             dgvDatos.Name = "dgvDatos";
             dgvDatos.RowHeadersVisible = false;
             dgvDatos.RowHeadersWidth = 51;
-            dgvDatos.Size = new Size(541, 179);
-            dgvDatos.TabIndex = 0;
+            dgvDatos.Size = new Size(618, 239);
+            dgvDatos.TabIndex = 1;
             // 
             // colMozos
             // 
@@ -114,10 +118,11 @@
             btnMozo.BackColor = Color.SteelBlue;
             btnMozo.Font = new Font("Arial", 9.75F, FontStyle.Bold);
             btnMozo.ForeColor = SystemColors.ControlLightLight;
-            btnMozo.Location = new Point(315, 377);
+            btnMozo.Location = new Point(360, 503);
+            btnMozo.Margin = new Padding(3, 4, 3, 4);
             btnMozo.Name = "btnMozo";
-            btnMozo.Size = new Size(111, 31);
-            btnMozo.TabIndex = 1;
+            btnMozo.Size = new Size(127, 41);
+            btnMozo.TabIndex = 8;
             btnMozo.Text = "Mozo del Día";
             btnMozo.UseVisualStyleBackColor = false;
             btnMozo.Click += btnMozo_Click;
@@ -127,10 +132,11 @@
             btnTotal.BackColor = Color.SteelBlue;
             btnTotal.Font = new Font("Arial", 9.75F, FontStyle.Bold);
             btnTotal.ForeColor = SystemColors.ControlLightLight;
-            btnTotal.Location = new Point(470, 377);
+            btnTotal.Location = new Point(537, 503);
+            btnTotal.Margin = new Padding(3, 4, 3, 4);
             btnTotal.Name = "btnTotal";
-            btnTotal.Size = new Size(83, 31);
-            btnTotal.TabIndex = 2;
+            btnTotal.Size = new Size(95, 41);
+            btnTotal.TabIndex = 9;
             btnTotal.Text = "Totales";
             btnTotal.UseVisualStyleBackColor = false;
             btnTotal.Click += btnTotal_Click;
@@ -140,10 +146,11 @@
             btnLimpiar.BackColor = Color.SteelBlue;
             btnLimpiar.Font = new Font("Arial", 9.75F, FontStyle.Bold);
             btnLimpiar.ForeColor = SystemColors.ControlLightLight;
-            btnLimpiar.Location = new Point(18, 377);
+            btnLimpiar.Location = new Point(21, 503);
+            btnLimpiar.Margin = new Padding(3, 4, 3, 4);
             btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(77, 31);
-            btnLimpiar.TabIndex = 4;
+            btnLimpiar.Size = new Size(88, 41);
+            btnLimpiar.TabIndex = 10;
             btnLimpiar.Text = "Cerrar";
             btnLimpiar.UseVisualStyleBackColor = false;
             btnLimpiar.Click += btnLimpiar_Click;
@@ -152,67 +159,65 @@
             // 
             lblTitulo.AutoSize = true;
             lblTitulo.Font = new Font("Arial Narrow", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTitulo.Location = new Point(12, 26);
+            lblTitulo.Location = new Point(14, 35);
             lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(292, 29);
-            lblTitulo.TabIndex = 6;
+            lblTitulo.Size = new Size(369, 35);
+            lblTitulo.TabIndex = 0;
             lblTitulo.Text = "Ingrese los importes de Venta";
             // 
             // lblTotal
             // 
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Arial", 10.8F, FontStyle.Bold);
-            lblTotal.Location = new Point(12, 310);
+            lblTotal.Location = new Point(14, 413);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(108, 18);
-            lblTotal.TabIndex = 7;
+            lblTotal.Size = new Size(133, 21);
+            lblTotal.TabIndex = 5;
             lblTotal.Text = "Total General:";
             // 
             // lblMozo
             // 
             lblMozo.AutoSize = true;
             lblMozo.Font = new Font("Arial", 10.8F, FontStyle.Bold);
-            lblMozo.Location = new Point(12, 266);
+            lblMozo.Location = new Point(14, 355);
             lblMozo.Name = "lblMozo";
-            lblMozo.Size = new Size(104, 18);
-            lblMozo.TabIndex = 9;
+            lblMozo.Size = new Size(128, 21);
+            lblMozo.TabIndex = 2;
             lblMozo.Text = "Mozo del Día:";
             // 
             // lblNombreMozo
             // 
             lblNombreMozo.AutoSize = true;
             lblNombreMozo.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNombreMozo.Location = new Point(139, 264);
+            lblNombreMozo.Location = new Point(159, 352);
             lblNombreMozo.Name = "lblNombreMozo";
-            lblNombreMozo.Size = new Size(89, 19);
-            lblNombreMozo.TabIndex = 10;
+            lblNombreMozo.Size = new Size(130, 24);
+            lblNombreMozo.TabIndex = 3;
             lblNombreMozo.Text = ". . . . . . . . . . ";
             // 
             // lstResultado
             // 
             lstResultado.FormattingEnabled = true;
-            lstResultado.ItemHeight = 15;
-            lstResultado.Location = new Point(144, 310);
-            lstResultado.Margin = new Padding(3, 2, 3, 2);
+            lstResultado.Location = new Point(165, 413);
             lstResultado.Name = "lstResultado";
-            lstResultado.Size = new Size(410, 49);
-            lstResultado.TabIndex = 11;
+            lstResultado.Size = new Size(468, 64);
+            lstResultado.TabIndex = 6;
             // 
             // lblImporteMozo
             // 
             lblImporteMozo.AutoSize = true;
             lblImporteMozo.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblImporteMozo.Location = new Point(249, 264);
+            lblImporteMozo.Location = new Point(312, 352);
             lblImporteMozo.Name = "lblImporteMozo";
-            lblImporteMozo.Size = new Size(89, 19);
-            lblImporteMozo.TabIndex = 12;
+            lblImporteMozo.Size = new Size(130, 24);
+            lblImporteMozo.TabIndex = 4;
             lblImporteMozo.Text = ". . . . . . . . . . ";
             // 
             // frmInicio
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(565, 438);
+            ClientSize = new Size(646, 584);
             Controls.Add(lblImporteMozo);
             Controls.Add(lstResultado);
             Controls.Add(lblNombreMozo);
@@ -225,6 +230,7 @@
             Controls.Add(btnTotal);
             Controls.Add(btnMozo);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(3, 4, 3, 4);
             Name = "frmInicio";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Ventas La Milanga";

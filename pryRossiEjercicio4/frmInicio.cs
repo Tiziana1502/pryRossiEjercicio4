@@ -21,7 +21,7 @@ namespace pryRossiEjercicio4
         int totalPostre = 0;
         int totalFinal = 0;
         int totalAux = 0;
-
+        string mozosGanadores = "";
 
         private void frmInicio_Load(object sender, EventArgs e)
         {
@@ -43,6 +43,9 @@ namespace pryRossiEjercicio4
                     dgvDatos.Rows[fila].Cells[col].Value = 0;
                 }
             }
+
+            //Para que al iniciar tenga foco en columna de comidas y no en mozos
+            dgvDatos.CurrentCell = dgvDatos.Rows[0].Cells[1];            
         }
 
         private void btnValidar_Click(object sender, EventArgs e)
@@ -62,9 +65,10 @@ namespace pryRossiEjercicio4
                     // Si la celda está vacía o nula
                     if (celda == null || celda.ToString() == "")
                     {
-                        MessageBox.Show($"Hay una celda vacía en la fila {fila + 1}, columna {col + 1}.",
+                        MessageBox.Show($"Hay una celda vacía",
                             "Dato faltante", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                        dgvDatos.Rows[fila].Cells[col].Style.BackColor = Color.Orange;
+                        dgvDatos.Rows[fila].Cells[col].Value = 0;
                         btnTotal.Enabled = false;
                         btnMozo.Enabled = false;
                         return false; //corta todo el método y devuelve false
@@ -80,44 +84,107 @@ namespace pryRossiEjercicio4
                         btnMozo.Enabled = false;
                         return false; //corta todo el método y devuelve false
                     }
+                    else if (numero < 0)
+                    {
+                        dgvDatos.Rows[fila].Cells[col].Style.BackColor = Color.Pink;                        
+                        MessageBox.Show("Se encontraron valores negativos en la grilla.",
+                        "Dato inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        btnMozo.Enabled = false;
+                        btnTotal.Enabled = false;
+                    }
                     else
                     {
                         dgvDatos.Rows[fila].Cells[col].Style.BackColor = Color.White;
                     }
-                }
+                }               
             }
             //Se muestra el mensaje de datos validados correctamente
             
-                MessageBox.Show("Los datos han sido validados correctamente.");
+                MessageBox.Show("Los datos han sido validados correctamente.",
                 "Datos Validados", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnMozo.Enabled = true;
                 btnTotal.Enabled = true;
-                return true;            
-            
+                return true;
+
+            //Grabo datos en matriz
+            for (int fila = 0; fila < 5; fila++)
+            {
+                // Recorremos las columnas de la grilla
+                for (int colGrilla = 1; colGrilla < 5; colGrilla++)
+                {
+                    // Calculamos el índice correcto para la matriz (una columna menos)
+                    int colMatriz = colGrilla - 1;
+
+                    // Convertimos el valor de la celda a float
+                    float valorCelda = Convert.ToSingle(dgvDatos.Rows[fila].Cells[colGrilla].Value);
+
+                    // Guardamos en la matriz
+                    vecDatos[fila, colMatriz] = valorCelda;
+                }
+            }
+            return true;
         }
 
         private void btnMozo_Click(object sender, EventArgs e)
         {
             if (!ValidarDatos())
                 return;
-            for (fila = 0; fila < 5; fila++)
+            
+            int altoImporte = 0;            
+
+            //Buscar el importe mayor de ventas
+            for (int fila = 0; fila < 5; fila++)
             {
-                contador = 0;
-                for (col = 1; col < 5; col++)
+                int ventaMozoActual = 0;                
+                for (int col = 1; col < 5; col++)
                 {
-                    contador += Convert.ToInt32(dgvDatos.Rows[fila].Cells[col].Value);
+                    
+                    if (dgvDatos.Rows[fila].Cells[col].Value != null)
+                    {
+                        ventaMozoActual += Convert.ToInt32(dgvDatos.Rows[fila].Cells[col].Value);
+                    }
                 }
 
-                if (contador > importeMozo)
+                // Si encontramos una venta mayor, actualizamos el máximo.
+                if (ventaMozoActual > altoImporte)
                 {
-                    importeMozo = contador;
-                    mozoVenta = Convert.ToString(dgvDatos.Rows[fila].Cells[0].Value);
+                    altoImporte = ventaMozoActual;
                 }
-            }
-            lblImporteMozo.Text = Convert.ToString(importeMozo);
-            lblNombreMozo.Text = mozoVenta;
+            }          
+
+            //Identificar y Concatenar los Nombres de los Mozos con el Importe Máximo
+            for (int fila = 0; fila < 5; fila++)
+            {
+                int ventaMozoActual = 0;
+                for (int col = 1; col < 5; col++)
+                {
+                    if (dgvDatos.Rows[fila].Cells[col].Value != null)
+                    {
+                        ventaMozoActual += Convert.ToInt32(dgvDatos.Rows[fila].Cells[col].Value);
+                    }
+                }
+
+                // Si la venta actual es igual al importe más alto
+                if (ventaMozoActual == altoImporte)
+                {
+                    string nombreMozo = Convert.ToString(dgvDatos.Rows[fila].Cells[0].Value);
+
+                    if (!string.IsNullOrEmpty(mozosGanadores))
+                    {
+                        // Si ya hay nombres, separamos con " y ".
+                        mozosGanadores += " y ";
+                    }
+                    // Agregamos el nombre del mozo actual.
+                    mozosGanadores += nombreMozo;
+                }
+            } 
+            
+            lblImporteMozo.Text = Convert.ToString(altoImporte);
+            lblNombreMozo.Text = mozosGanadores;
             importeMozo = 0;
         }
+
+
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             this.Close();
